@@ -5,41 +5,30 @@ import java.util.List;
 
 public class ProductsUtilImpl implements ProductsUtil {
     @Override
-    public void quantityAllGoods(List<Product> products) {
-        System.out.println("Общее количество продуктов " + products.size());
+    public Integer quantityAllGoods(List<Product> products) {
+       return products.size();
     }
 
     @Override
-    public void searchByName(List<Product> products, String name) {
-        boolean found = false;
+    public Product searchByName(List<Product> products, String name) {
         for (Product product : products) {
             if (product.getName().equals(name)) {
-                found = true;
-                break;
+                return product;
             }
         }
-        if (found) {
-            System.out.println(name + " присутствует в списке продуктов. ");
-        } else {
-            System.out.println(name + " отсутствует в списке продуктов. ");
-        }
+        return null;
     }
 
     @Override
-    public void searchByPrice(List<Product> products, double price) {
+    public List<Product> searchByPrice(List<Product> products, double price) {
         List<Product> resultList = new ArrayList<>();
         for (Product product : products) {
             if (product.getPrice() > price) {
                 resultList.add(product);
             }
         }
-        if (!resultList.isEmpty()) {
-            System.out.println("Список найденных продуктов: ");
-            printAllProducts(resultList);
-        } else {
-            System.out.println("Продуктов выше указынной ценны не найдено.");
+        return resultList;
         }
-    }
 
     @Override
     public List<Product> addProductToListMiddle(List<Product> list, Product product) {

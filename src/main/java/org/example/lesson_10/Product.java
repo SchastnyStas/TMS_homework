@@ -5,6 +5,15 @@ public class Product {
     private double price;
     private double count;
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", count=" + count +
+                '}';
+    }
+
     public Product(String name, double price, double count) {
         this.name = name;
         this.price = price;
